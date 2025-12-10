@@ -9,6 +9,12 @@ import java.time.LocalTime;
 import java.util.List;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
+// This is an entity class, it models the study spaces,
+// it contains the fields, id, name, description, capacity, openTime, closeTime,
+// a list of the reservations, a constructor, and setters and getters for all fields
+//
+
+
 @Entity
 @Table(name = "study_spaces")
 public class StudySpace {
