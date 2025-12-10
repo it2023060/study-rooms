@@ -5,6 +5,10 @@ import java.util.List;
 import java.time.LocalDate;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
+// This is an entity class, it models the Users. It contains the fields,
+// id, username, password, fullName, email, role, the user's reservations, penaltyUtil
+// A constructor, setters and getters for all fields
+
 @Entity
 @Table(name = "users")
 public class User {
