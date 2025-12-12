@@ -1,8 +1,24 @@
+<!--This is an html form, it is used to get input from the user,
+it is the entry point for the data to the system.
+An html form supports two methods, POST and GET.
+What GET does is that it allows the user(browser)to request data from the app.
+While, the POST method allows the user(browser) to send data to the app
+th:replace, helps as replace a portion of our code with the code of another form
+th:content, this is our page's mane content
+th:href, -->
+
+
+
 <!DOCTYPE html>
+<!--th: means we can use thymeleaf attributes, like, dynamic values, conditions, loops, links, etc.-->
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
+<!--we replace our own head with the layouts head passing as an argument only our title, it is some front end design-->
 <head th:replace="~{layout :: head('Access Denied - StudyRooms')}"></head>
 
 <body th:replace="~{layout :: body('', ~{::content})}">
+
+<!--This defines the part of the page that will be inserted into the layout.
+Everything inside this <div> becomes the page’s main content.-->
 <div th:fragment="content">
 
     <div class="text-center my-5">
