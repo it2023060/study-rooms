@@ -1,3 +1,6 @@
+// So this is a controller class is an exception handler for the apis only
+//
+//
 package gr.hua.dit.studyrooms.controller.api;
 
 import org.springframework.http.HttpStatus;
@@ -10,6 +13,8 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 import java.util.HashMap;
 import java.util.Map;
 
+// @RestControllerAdvice: It says I will handle the exceptions for controllers.
+// basePackageClasses: which controllers this applies to.
 @RestControllerAdvice(basePackageClasses = {
         AuthApiController.class,
         ReservationApiController.class,
@@ -18,7 +23,9 @@ import java.util.Map;
         StatsApiController.class
 })
 public class ApiExceptionHandler {
-
+// This is for validation errors, you have used @valid on a request body
+// and it fails @NotNull, @Size, etc.
+// It throws MethodArgumentNotValidException.
     @ExceptionHandler(MethodArgumentNotValidException.class)
     public ResponseEntity<Map<String, Object>> handleValidationErrors(MethodArgumentNotValidException ex) {
         Map<String, String> fieldErrors = new HashMap<>();

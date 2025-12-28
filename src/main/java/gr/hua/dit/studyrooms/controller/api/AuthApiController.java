@@ -1,5 +1,10 @@
-package gr.hua.dit.studyrooms.controller.api;
+// So this API controller exposes register and login
+// It receives HTTP requests
+// Calls backend services
+// Returns HTTP responses
+// Does not contain business logic itself
 
+package gr.hua.dit.studyrooms.controller.api;
 import gr.hua.dit.studyrooms.dto.UserRegistrationDto;
 import gr.hua.dit.studyrooms.entity.User;
 import gr.hua.dit.studyrooms.service.UserService;
@@ -15,6 +20,10 @@ import gr.hua.dit.studyrooms.security.JwtService;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
+
+// @RestController: This is a Rest Controller,
+// Return values are written to the HTTP response body.
+// @RequestMapping("/api/auth"): all endpoints start with /api/auth
 
 @RestController
 @RequestMapping("/api/auth")
