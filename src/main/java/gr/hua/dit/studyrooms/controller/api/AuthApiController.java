@@ -1,9 +1,5 @@
-// So this API controller exposes register and login
-// It receives HTTP requests
-// Calls backend services
-// Returns HTTP responses
-// Does not contain business logic itself
-
+// POST /register, it registers a new student user.
+// POST /login, authenticates a user and returns a JWT token.
 package gr.hua.dit.studyrooms.controller.api;
 import gr.hua.dit.studyrooms.dto.UserRegistrationDto;
 import gr.hua.dit.studyrooms.entity.User;

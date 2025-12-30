@@ -1,3 +1,26 @@
+// @RestController: @Controller + @ResponseBody
+// This class will handle HTTP requests and will return data(JASON)
+// but wont render HTML pages.
+// @RequestMapping("/api/reservations"): Every single method in this
+// class will have URLs that start with /api/reservations.
+// @Tag: only helps humans understand the API.
+// It does NOT change what the API does.
+// @SecurityRequirement(name = "bearerAuth"): all endpoints in this controller
+// require you to provide a token.
+// @GetMapping("/my"): Maps HTTP GET requests to this method
+// @PostMapping: Maps HTTP POST requests to this method, used for creating something new.
+// @DeleteMapping("/{id}"): Maps HTTP DELETE requests to this method.
+// {id}: is the path variable which gets passed to the method.
+// @Operation(Summary = "..."): adds a short description of what the endpoint
+// does in the API documentation.
+// @Valid: validates the incoming req body against rules defined in the DTO
+// @RequestBody: Tells Spring to read the HTTP request body and convert
+// JSON into a Java object.
+// @PathVariable: Reads a value from the URL path.
+// Authentication auth: Spring injects the current
+// logged in user's authentication info into your method.
+//
+
 package gr.hua.dit.studyrooms.controller.api;
 
 import gr.hua.dit.studyrooms.dto.ReservationFormDto;
@@ -27,13 +50,18 @@ public class ReservationApiController {
         this.reservationService = reservationService;
     }
 
+    // Gives back all the reservations that belong to the currently logged in user.
     // GET /api/reservations/my
     @Operation(summary = "List reservations for the authenticated user")
+    // We call this point with a GET method.
     @GetMapping("/my")
     public ResponseEntity<List<Reservation>> getMyReservations(Authentication auth) {
+        // Extract the user(who is logged in)
         CustomUserDetails cud = (CustomUserDetails) auth.getPrincipal();
+        // Extract the actual user entity.
         User user = cud.getUser();
 
+        // Spring converts the returned List<Reservation> into a JSON.
         return ResponseEntity.ok(reservationService.getReservationsForUser(user));
     }
 
